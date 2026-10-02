@@ -3,7 +3,7 @@
 export function renderBottomNav(state) {
   const hiddenScreens = [
     'A1_splash', 'A2_welcome', 'A3_slides', 'A4_setup', 'A5_permissions',
-    'D1_ringing', 'D2_snoozing', 'D3_mission_completed', 'D4_wakeup_check', 'D5_emergency_exit',
+    'B9_nap_countdown', 'D1_ringing', 'D2_snoozing', 'D3_mission_completed', 'D4_wakeup_check', 'D5_emergency_exit',
     'exec_math', 'exec_memory', 'exec_shake', 'exec_photo', 'exec_qr', 'exec_typing', 'exec_walking', 'exec_squats',
     'E4_active_session'
   ];

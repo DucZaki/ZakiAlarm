@@ -1,4 +1,5 @@
 // Application State Store for ZakiAlarm
+import {restoreState, persistState} from './persistence.js';
 
 class AppStore {
   constructor() {
@@ -30,7 +31,7 @@ class AppStore {
           snoozeDuration: 10,
           snoozeMax: 3,
           snoozeRemaining: 3,
-          missions: ['math', 'photo'],
+          missions: ['math'],
           wakeupCheck: true,
           preventEarlyEdit: true,
           boostSound: true
@@ -89,10 +90,10 @@ class AppStore {
 
       // Permissions Checklist
       permissions: {
-        notifications: 'granted',
-        camera: 'granted',
-        microphone: 'granted',
-        motion: 'granted'
+        notifications: 'default',
+        camera: 'default',
+        microphone: 'default',
+        motion: 'default'
       },
 
       // Sleep Tracking State
@@ -164,6 +165,7 @@ class AppStore {
       wakeupCheckTimerSeconds: 180, // 3 minutes to confirm
       hasWakeupCheckActive: false
     };
+    this.state = restoreState({...this.state, sleepHistory:[], customSounds:[], recordings:[], quickNap:null, sleepSchedule:{bedtime:'23:00',wakeTime:'07:00'}, activeAlarmSession:null});
   }
 
   getState() {
@@ -176,6 +178,7 @@ class AppStore {
   }
 
   notify() {
+    this.state.storageError = !persistState(this.state);
     this.listeners.forEach(fn => fn(this.state));
   }
 
@@ -189,6 +192,7 @@ class AppStore {
       this.state.screenHistory.push(this.state.currentScreen);
     }
     this.state.currentScreen = screenId;
+    this.state.currentTab = screenId.startsWith('E') ? 'sleep' : screenId.startsWith('F') ? 'relax' : screenId.startsWith('G') ? 'profile' : 'alarms';
     this.notify();
   }
 
@@ -270,7 +274,7 @@ class AppStore {
     const orig = this.state.alarms.find(a => a.id === alarmId);
     if (orig) {
       const copy = {
-        ...orig,
+        ...structuredClone(orig),
         id: 'alarm_' + Date.now(),
         label: `${orig.label} (Bản sao)`
       };

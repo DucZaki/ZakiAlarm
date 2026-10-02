@@ -1,13 +1,14 @@
 // Screen Module: B. Alarm Management (B1 - B8)
+import {escapeHTML, nextAlarm as findNextAlarm} from '../domain/alarm.js';
 
 export function renderAlarms(state) {
   const current = state.currentScreen;
 
   // B1: Main Alarms Home Screen
   if (current === 'B1_home') {
-    const activeAlarms = state.alarms.filter(a => a.enabled);
-    const hasActive = activeAlarms.length > 0;
-    const nextAlarm = hasActive ? activeAlarms[0] : null;
+    const next = findNextAlarm(state.alarms);
+    const hasActive = !!next;
+    const nextAlarm = next?.alarm;
 
     return `
       <div class="screen-viewport">
@@ -30,11 +31,13 @@ export function renderAlarms(state) {
 
           <!-- Quick Nap Chips Row -->
           <div class="nap-chips-row">
-            <button class="nap-chip" data-quick-minutes="15">⚡️ Chợp mắt 15p</button>
-            <button class="nap-chip" data-quick-minutes="20">☕️ Ngủ trưa 20p</button>
-            <button class="nap-chip" data-quick-minutes="30">🔋 Hồi phục 30p</button>
-            <button class="nap-chip" data-quick-minutes="60">💤 Chu kỳ 60p</button>
+            <button class="nap-chip ${state.quickNap?.minutes===15?'z-selected':''}" data-quick-minutes="15">⚡️ Chợp mắt 15p</button>
+            <button class="nap-chip ${state.quickNap?.minutes===20?'z-selected':''}" data-quick-minutes="20">☕️ Ngủ trưa 20p</button>
+            <button class="nap-chip ${state.quickNap?.minutes===30?'z-selected':''}" data-quick-minutes="30">🔋 Hồi phục 30p</button>
+            <button class="nap-chip ${state.quickNap?.minutes===60?'z-selected':''}" data-quick-minutes="60">💤 Chu kỳ 60p</button>
           </div>
+
+          ${state.quickNap ? `<button class="card z-nap-resume" data-do="navigate" data-value="B9_nap_countdown"><span>☁️ Đang chợp mắt ${state.quickNap.minutes} phút</span><strong id="quick-nap-home-countdown">${Math.max(0,Math.ceil((state.quickNap.deadline-Date.now())/60000))}:00</strong><span>›</span></button>` : ''}
 
           <!-- Next Alarm Countdown Banner -->
           ${hasActive ? `
@@ -42,7 +45,7 @@ export function renderAlarms(state) {
               <span class="text-small" style="color: var(--text-secondary);">Chuông báo tiếp theo</span>
               <div class="banner-countdown tabular-nums">Còn 7 giờ 42 phút nữa</div>
               <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
-                <span class="text-small" style="font-weight: 600; color: var(--text-primary);">${nextAlarm.time} ${nextAlarm.period} — ${nextAlarm.label}</span>
+                <span class="text-small" style="font-weight: 600; color: var(--text-primary);">${nextAlarm.time} — ${escapeHTML(nextAlarm.label)}</span>
                 <span class="badge badge-mint">${nextAlarm.missions.length} nhiệm vụ</span>
               </div>
             </div>
@@ -81,7 +84,7 @@ export function renderAlarms(state) {
                       <span class="alarm-card-period">${alarm.period}</span>
                     </div>
                     <div class="alarm-card-label">
-                      ${alarm.label}
+                      ${escapeHTML(alarm.label)}
                     </div>
                     <div class="alarm-card-schedule">
                       ${alarm.days.length === 0 ? 'Một lần' : alarm.days.length === 7 ? 'Mỗi ngày' : alarm.days.join(', ')}
@@ -91,6 +94,7 @@ export function renderAlarms(state) {
                         <span class="badge badge-lavender" style="font-size: 10px;">${missionIcons[m] || m}</span>
                       `).join('')}
                       ${alarm.wakeupCheck ? `<span class="badge badge-peach" style="font-size: 10px;">Kiểm tra 5p</span>` : ''}
+                      ${alarm.skipAt && alarm.skipAt > Date.now() ? '<span class="badge badge-peach">Bỏ qua lần tới</span>' : ''}
                     </div>
                   </div>
 
@@ -436,11 +440,12 @@ export function renderAlarms(state) {
   // B7: Action Sheet for an Alarm
   if (current === 'B7_actions') {
     const selectedAlarm = state.selectedAlarmForAction || state.alarms[0];
+    if (!selectedAlarm) return '<div class="screen-viewport"><div class="screen-content z-content"><div class="z-empty"><h2>Chưa có báo thức</h2><p>Tạo báo thức đầu tiên để sử dụng các tác vụ.</p></div><button class="btn-primary" id="btn-add-alarm">Tạo báo thức</button></div></div>';
     return `
       <div class="screen-viewport">
         <div class="screen-content" style="padding-top: 20px;">
           <h2>Tác vụ báo thức</h2>
-          <p style="margin-top: 4px;">Đang chọn: <strong>${selectedAlarm.time} — ${selectedAlarm.label}</strong></p>
+          <p style="margin-top: 4px;">Đang chọn: <strong>${selectedAlarm.time} — ${escapeHTML(selectedAlarm.label)}</strong></p>
 
           <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px;">
             <button class="card card-clickable" id="action-edit-alarm" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 16px;">
@@ -463,7 +468,7 @@ export function renderAlarms(state) {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
               <div>
                 <h3 style="font-size: 15px;">Bỏ qua lần reo tiếp theo</h3>
-                <p class="text-small">Không reo vào ngày mai, tự động bật lại ngày kế tiếp</p>
+                <p class="text-small">Bỏ qua đúng lần reo sắp tới, giữ các ngày lặp còn lại</p>
               </div>
             </button>
 

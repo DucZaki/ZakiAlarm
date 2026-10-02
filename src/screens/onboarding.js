@@ -45,7 +45,7 @@ export function renderOnboarding(state) {
                 <div style="width: 40px; height: 40px; border-radius: 12px; background: var(--accent-mint-dim); color: var(--accent-mint); display: flex; align-items: center; justify-content: center; font-size: 20px;">✨</div>
                 <div>
                   <h3 style="font-size: 15px;">Mọi tính năng đều mở khóa</h3>
-                  <p class="text-small">Tất cả nhiệm vụ, âm thanh và phân tích giấc ngủ đều hoàn toàn miễn phí trọn đời.</p>
+                  <p class="text-small">Nhiệm vụ, âm thanh và nhật ký giấc ngủ đều miễn phí, không quảng cáo, không cần tài khoản.</p>
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@ export function renderOnboarding(state) {
         emoji: '🌙',
         color: 'lavender',
         title: 'Thấu hiểu giấc ngủ sâu',
-        desc: 'Theo dõi chu kỳ giấc ngủ, ghi nhận tiếng ngáy và nhận báo cáo điểm số phục hồi mỗi sáng mà không mất bất kỳ chi phí nào.'
+        desc: 'Ghi lại thời gian nghỉ, xem lịch sử và xu hướng từ các phiên bạn đã lưu. Không tự đo giai đoạn ngủ hoặc chẩn đoán sức khỏe.'
       },
       {
         emoji: '🌧️',
@@ -248,7 +248,7 @@ export function renderOnboarding(state) {
                 </div>
                 <div>
                   <h3 style="font-size: 14px;">Microphone</h3>
-                  <p class="text-small">Theo dõi tiếng ngáy (Xử lý 100% trên máy)</p>
+                  <p class="text-small">Ghi mẫu âm thanh trên máy khi bạn chủ động bật microphone</p>
                 </div>
               </div>
               <label class="toggle-switch">

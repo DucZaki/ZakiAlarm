@@ -2,14 +2,14 @@
 
 export function renderPrototypeToolbar(state) {
   const flows = [
-    { id: 1, title: 'Flow 1: Bắt đầu → Báo thức đầu tiên' },
-    { id: 2, title: 'Flow 2: Báo thức QR → Đổ chuông → Quét mã' },
-    { id: 3, title: 'Flow 3: Đổ chuông → Hoãn (Snooze) → Reo lại' },
-    { id: 4, title: 'Flow 4: Bỏ lỡ kiểm tra thức giấc → Reo lại' },
-    { id: 5, title: 'Flow 5: Âm thanh thư giãn → Theo dõi → Báo cáo sáng' },
-    { id: 6, title: 'Flow 6: Quyền bị từ chối → Khôi phục' },
-    { id: 7, title: 'Flow 7: Nhiệm vụ lỗi → Thoát khẩn cấp' },
-    { id: 8, title: 'Flow 8: Chuỗi đa nhiệm vụ (Toán + Lắc + Ảnh)' }
+    { id: 1, title: 'Gợi ý: xem giới thiệu' },
+    { id: 2, title: 'Gợi ý: cài đặt nhiệm vụ QR' },
+    { id: 3, title: 'Gợi ý: cài đặt báo lại' },
+    { id: 4, title: 'Gợi ý: kiểm tra thức giấc' },
+    { id: 5, title: 'Gợi ý: chuẩn bị phiên nghỉ' },
+    { id: 6, title: 'Gợi ý: kiểm tra quyền' },
+    { id: 7, title: 'Gợi ý: thử chuông' },
+    { id: 8, title: 'Gợi ý: ghép chuỗi nhiệm vụ' }
   ];
 
   const screenGroups = [
@@ -32,6 +32,7 @@ export function renderPrototypeToolbar(state) {
         { id: 'B4_sound_picker', name: 'B4: Bộ chọn âm thanh chuông' },
         { id: 'B5_snooze_config', name: 'B5: Cài đặt hoãn báo thức' },
         { id: 'B6_quick_alarm', name: 'B6: Báo thức nhanh / Ngủ trưa' },
+        { id: 'B9_nap_countdown', name: 'B9: Đếm ngược chợp mắt' },
         { id: 'B7_actions', name: 'B7: Menu tác vụ nhanh báo thức' },
         { id: 'B8_advanced', name: 'B8: Tùy chọn nâng cao & Chống ngủ quên' }
       ]
@@ -76,7 +77,7 @@ export function renderPrototypeToolbar(state) {
       ]
     },
     {
-      group: 'E. Giấc ngủ & Tiếng ngáy',
+      group: 'E. Nhật ký nghỉ & Âm thanh',
       screens: [
         { id: 'E1_sleep_overview', name: 'E1: Tổng quan giấc ngủ' },
         { id: 'E2_sleep_schedule', name: 'E2: Lịch trình & Giờ đi ngủ' },
@@ -85,7 +86,7 @@ export function renderPrototypeToolbar(state) {
         { id: 'E5_night_report', name: 'E5: Báo cáo phân tích chu kỳ đêm' },
         { id: 'E6_history', name: 'E6: Lịch sử & Lịch nhật ký ngủ' },
         { id: 'E7_trends', name: 'E7: Xu hướng & Thống kê 30 ngày' },
-        { id: 'E8_snore_recordings', name: 'E8: Bản ghi âm tiếng ngáy (Miễn phí)' }
+        { id: 'E8_snore_recordings', name: 'E8: Mẫu ghi âm microphone' }
       ]
     },
     {
