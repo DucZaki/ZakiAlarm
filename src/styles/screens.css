@@ -1,0 +1,707 @@
+/* Screen Specific Styles */
+
+/* Screen Header */
+.screen-header {
+  padding: 16px 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.screen-title-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.screen-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* =========================================================
+   A. ONBOARDING
+   ========================================================= */
+.onboarding-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 0 16px;
+  text-align: center;
+}
+
+.onboarding-logo-center {
+  margin: 40px auto 24px;
+  width: 96px;
+  height: 96px;
+  filter: drop-shadow(0 10px 30px rgba(94, 234, 212, 0.3));
+}
+
+.slide-illustration {
+  width: 180px;
+  height: 180px;
+  margin: 20px auto;
+  border-radius: var(--radius-xl);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--border-medium);
+  transition: all var(--transition-base);
+}
+
+.carousel-dot.active {
+  width: 24px;
+  background: var(--accent-mint);
+}
+
+.permission-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface);
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+  border: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+.permission-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-mint);
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   B. ALARM MANAGEMENT & HOME
+   ========================================================= */
+.next-alarm-banner {
+  background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-elevated) 100%);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.next-alarm-banner::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, var(--accent-mint-dim) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.banner-countdown {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent-mint);
+  letter-spacing: -0.01em;
+  margin: 4px 0 2px;
+}
+
+.alarm-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+}
+
+.alarm-card:active {
+  transform: scale(0.99);
+}
+
+.alarm-card.disabled {
+  opacity: 0.55;
+}
+
+.alarm-card-time {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+}
+
+.alarm-card-period {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: 4px;
+}
+
+.alarm-card-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.alarm-card-schedule {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.alarm-card-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+/* Time Picker Drum / Wheel */
+.time-picker-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+  background: var(--bg-surface);
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+}
+
+.time-picker-digit {
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  padding: 6px 12px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-medium);
+  cursor: pointer;
+}
+
+.time-picker-colon {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--accent-mint);
+  animation: pulseGlow 1.5s infinite;
+}
+
+.time-picker-period-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 10px;
+}
+
+.period-pill {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.period-pill.active {
+  background: var(--accent-mint);
+  color: #0B1220;
+}
+
+/* =========================================================
+   C. MISSION SETUP & EXECUTION
+   ========================================================= */
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.mission-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface);
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mission-card:hover {
+  border-color: var(--accent-mint);
+  background: var(--bg-card-hover);
+}
+
+.mission-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.mission-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mission-icon-box.mint {
+  background: var(--accent-mint-dim);
+  color: var(--accent-mint);
+}
+
+.mission-icon-box.lavender {
+  background: var(--accent-lavender-dim);
+  color: var(--accent-lavender);
+}
+
+.mission-icon-box.peach {
+  background: var(--accent-peach-dim);
+  color: var(--accent-peach);
+}
+
+/* Mission Execution Full Screen */
+.mission-exec-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 20px 24px;
+  background: var(--bg-primary);
+  text-align: center;
+}
+
+.mission-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-elevated);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.mission-progress-fill {
+  height: 100%;
+  background: var(--accent-mint);
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+/* Math Keypad */
+.math-question-box {
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  padding: 24px 16px;
+  margin: 16px 0;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.math-formula {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.math-input-result {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent-mint);
+  min-height: 42px;
+  border-bottom: 2px dashed var(--accent-mint);
+  min-width: 100px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.keypad-key {
+  height: 60px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.keypad-key:active {
+  transform: scale(0.92);
+  background: var(--bg-elevated);
+}
+
+/* Memory Grid */
+.memory-grid-container {
+  display: grid;
+  gap: 12px;
+  max-width: 280px;
+  margin: 24px auto;
+}
+
+.memory-grid-3x3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.memory-cell {
+  aspect-ratio: 1;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.memory-cell.highlighted {
+  background: var(--accent-mint);
+  box-shadow: 0 0 15px var(--accent-mint);
+}
+
+.memory-cell.revealed-correct {
+  background: var(--status-success);
+}
+
+.memory-cell.revealed-wrong {
+  background: var(--status-danger);
+}
+
+/* Shake Screen */
+.shake-circle-meter {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shake-count-number {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+/* Camera & QR Viewfinders */
+.viewfinder-frame {
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  background: #000000;
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+  margin: 16px 0;
+  border: 2px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewfinder-guide-box {
+  width: 75%;
+  height: 70%;
+  border: 2px dashed var(--accent-mint);
+  border-radius: var(--radius-md);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-laser-line {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: #FF6464;
+  box-shadow: 0 0 10px #FF6464;
+  animation: laserScan 2s infinite ease-in-out;
+}
+
+/* Typing Screen */
+.typing-target-box {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  border: 1px solid var(--border-subtle);
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+  margin: 16px 0;
+}
+
+.typing-input-area {
+  width: 100%;
+  height: 100px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+}
+
+.typing-input-area:focus {
+  border-color: var(--accent-mint);
+}
+
+/* =========================================================
+   D. WAKE-UP FLOW (RINGING, SNOOZE, CHECK, MORNING SUMMARY)
+   ========================================================= */
+.ringing-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 24px 32px;
+  background: radial-gradient(circle at 50% 30%, #1A2840 0%, #0B1220 100%);
+  text-align: center;
+}
+
+.ringing-time-large {
+  font-size: 68px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  margin: 20px 0 4px;
+}
+
+.pulsing-wake-ring {
+  width: 160px;
+  height: 160px;
+  margin: 20px auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-mint) 0%, rgba(94, 234, 212, 0.1) 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulseGlow 1.8s infinite ease-in-out;
+  box-shadow: 0 0 40px rgba(94, 234, 212, 0.4);
+}
+
+.morning-summary-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+.mood-selector-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.mood-btn {
+  flex: 1;
+  height: 52px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mood-btn.active {
+  background: var(--accent-mint);
+  border-color: var(--accent-mint);
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   E. SLEEP TRACKING & CHARTS
+   ========================================================= */
+.sleep-score-ring {
+  width: 150px;
+  height: 150px;
+  margin: 16px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sleep-score-val {
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--accent-lavender);
+}
+
+.hypnogram-chart {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin: 16px 0;
+  border: 1px solid var(--border-subtle);
+}
+
+.hypno-bar-col {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 90px;
+  margin-top: 12px;
+}
+
+.hypno-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s;
+}
+
+.hypno-bar.deep { background: #6366F1; }
+.hypno-bar.light { background: #A855F7; }
+.hypno-bar.rem { background: #EC4899; }
+.hypno-bar.awake { background: #F59E0B; }
+
+/* Snore Audio Clip Card */
+.snore-clip-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Active Sleep Session Screen */
+.active-sleep-screen {
+  flex: 1;
+  background-color: #03060B; /* Deep OLED black */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 24px 32px;
+  text-align: center;
+}
+
+.hold-to-stop-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.hold-to-stop-btn {
+  width: 100%;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--border-medium);
+}
+
+.hold-progress-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0%;
+  background: var(--status-danger);
+  opacity: 0.35;
+  transition: width 0.1s linear;
+}
+
+/* =========================================================
+   F. RELAXATION PLAYER
+   ========================================================= */
+.relax-player-artwork {
+  width: 180px;
+  height: 180px;
+  margin: 20px auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-lavender-dim) 0%, var(--bg-surface) 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-medium);
+  box-shadow: 0 0 30px rgba(181, 163, 255, 0.2);
+  position: relative;
+}
+
+/* =========================================================
+   G. SETTINGS & DIAGNOSTICS
+   ========================================================= */
+.diagnostic-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 14px;
+}

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#151F32" />
+      <stop offset="100%" stop-color="#0B1220" />
+    </linearGradient>
+    
+    <!-- Sunrise Glow Gradient -->
+    <radialGradient id="sunGlow" cx="50%" cy="85%" r="70%">
+      <stop offset="0%" stop-color="#FFBE98" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#B5A3FF" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#5EEAD4" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Z Neon Stroke Gradient -->
+    <linearGradient id="zGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5EEAD4" />
+      <stop offset="50%" stop-color="#B5A3FF" />
+      <stop offset="100%" stop-color="#FFBE98" />
+    </linearGradient>
+
+    <!-- Outer Rim Gradient -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5EEAD4" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#B5A3FF" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#FFBE98" stop-opacity="0.2" />
+    </linearGradient>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Container -->
+  <rect width="120" height="120" rx="30" fill="url(#bgGrad)" />
+
+  <!-- Clock Outer Dial Rim with 12 hour subtle tick notches -->
+  <circle cx="60" cy="60" r="46" fill="none" stroke="url(#rimGrad)" stroke-width="2.5" stroke-dasharray="1 11" stroke-linecap="round" />
+  <circle cx="60" cy="60" r="42" fill="none" stroke="#202D44" stroke-width="1.5" />
+
+  <!-- Sunrise Horizon & Rays (Bottom Arc) -->
+  <path d="M26 80 Q60 68 94 80" fill="none" stroke="#202D44" stroke-width="2" />
+  
+  <!-- Sunrise Sun Sphere Rising -->
+  <circle cx="60" cy="74" r="16" fill="url(#sunGlow)" />
+  <circle cx="60" cy="74" r="10" fill="#FFBE98" opacity="0.9" />
+
+  <!-- Sunrise Morning Rays -->
+  <line x1="60" y1="52" x2="60" y2="44" stroke="#FFBE98" stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
+  <line x1="44" y1="58" x2="38" y2="52" stroke="#FFBE98" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+  <line x1="76" y1="58" x2="82" y2="52" stroke="#FFBE98" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+  <line x1="33" y1="70" x2="25" y2="68" stroke="#FFBE98" stroke-width="1.8" stroke-linecap="round" opacity="0.6" />
+  <line x1="87" y1="70" x2="95" y2="68" stroke="#FFBE98" stroke-width="1.8" stroke-linecap="round" opacity="0.6" />
+
+  <!-- Central Dynamic "Z" Combined With Clock Hands -->
+  <!-- Top Horizontal Bar of Z -->
+  <path d="M42 36 L78 36" stroke="url(#zGrad)" stroke-width="5" stroke-linecap="round" />
+  <!-- Diagonal Dynamic Slash of Z (passing through clock center) -->
+  <path d="M76 38 L44 76" stroke="url(#zGrad)" stroke-width="5.5" stroke-linecap="round" filter="url(#softGlow)" />
+  <!-- Bottom Horizontal Bar of Z -->
+  <path d="M44 76 L78 76" stroke="url(#zGrad)" stroke-width="5" stroke-linecap="round" />
+
+  <!-- Clock Center Pivot Pin & Subtle Clock Hands Indicator -->
+  <circle cx="60" cy="57" r="4.5" fill="#5EEAD4" />
+  <circle cx="60" cy="57" r="2" fill="#0B1220" />
+
+  <!-- Morning Star Accent at top right -->
+  <path d="M84 26 L86 31 L91 33 L86 35 L84 40 L82 35 L77 33 L82 31 Z" fill="#5EEAD4" opacity="0.85" />
+</svg>

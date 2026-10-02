@@ -1,0 +1,133 @@
+:root {
+  /* Dark Theme Tokens (Default) */
+  --bg-primary: #0B1220;
+  --bg-surface: #151F32;
+  --bg-elevated: #202D44;
+  --bg-subtle: #111A2C;
+  --bg-input: #101826;
+  --bg-card-hover: #19263D;
+
+  --text-primary: #F5F7FB;
+  --text-secondary: #AAB8CE;
+  --text-tertiary: #6E7E98;
+  --text-inverse: #0B1220;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-focus: #5EEAD4;
+
+  /* Accents */
+  --accent-mint: #5EEAD4;
+  --accent-mint-dim: rgba(94, 234, 212, 0.15);
+  --accent-mint-hover: #48d8c2;
+
+  --accent-lavender: #B5A3FF;
+  --accent-lavender-dim: rgba(181, 163, 255, 0.15);
+  --accent-lavender-hover: #9f8aff;
+
+  --accent-peach: #FFBE98;
+  --accent-peach-dim: rgba(255, 190, 152, 0.15);
+  --accent-peach-hover: #ffad80;
+
+  --status-danger: #FF6464;
+  --status-danger-dim: rgba(255, 100, 100, 0.15);
+  --status-success: #2DD4BF;
+  --status-warning: #FBBF24;
+
+  /* Geometry & Grid */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px; /* 20pt card radius */
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+
+  --margin-side: 20px;
+  --min-touch-target: 48px; /* 48pt minimum touch target */
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-mint: 0 8px 25px rgba(94, 234, 212, 0.25);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Light Theme Overrides */
+body.theme-light {
+  --bg-primary: #F4F7FB;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #EAF0F8;
+  --bg-subtle: #E2EAF4;
+  --bg-input: #EDF3FA;
+  --bg-card-hover: #F8FAFD;
+
+  --text-primary: #142238;
+  --text-secondary: #586B84;
+  --text-tertiary: #8494AA;
+  --text-inverse: #FFFFFF;
+
+  --border-subtle: rgba(20, 34, 56, 0.08);
+  --border-medium: rgba(20, 34, 56, 0.16);
+  --border-focus: #087F73;
+
+  /* Primary Light brand */
+  --accent-mint: #087F73;
+  --accent-mint-dim: rgba(8, 127, 115, 0.12);
+  --accent-mint-hover: #06665c;
+  --text-on-mint: #FFFFFF;
+
+  --accent-lavender: #6D54CD;
+  --accent-lavender-dim: rgba(109, 84, 205, 0.12);
+  --accent-lavender-hover: #5941b3;
+
+  --accent-peach: #DD6B20;
+  --accent-peach-dim: rgba(221, 107, 32, 0.12);
+  --accent-peach-hover: #c45b16;
+
+  --status-danger: #E53E3E;
+  --status-danger-dim: rgba(229, 62, 62, 0.12);
+  --status-success: #087F73;
+  --status-warning: #D97706;
+
+  --shadow-sm: 0 2px 8px rgba(20, 34, 56, 0.06);
+  --shadow-md: 0 8px 24px rgba(20, 34, 56, 0.08);
+  --shadow-lg: 0 16px 40px rgba(20, 34, 56, 0.12);
+  --shadow-mint: 0 8px 25px rgba(8, 127, 115, 0.2);
+}
+
+/* Dynamic Text Scaling */
+body.text-scale-large {
+  font-size: 110%;
+}
+body.text-scale-xlarge {
+  font-size: 120%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
