@@ -1,6 +1,6 @@
 {
-  "name": "b-o-th-c",
-  "version": "0.0.0",
+  "name": "zakialarm",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,5 +15,15 @@
   "dependencies": {
     "canvas-confetti": "^1.9.4",
     "lucide": "^1.49.0"
-  }
+  },
+  "description": "ZakiAlarm - Vietnamese, mobile-first alarm and sleep-journal web app. Every feature free, no account needed.",
+  "license": "MIT",
+  "author": "Nguyen Minh Duc",
+  "keywords": [
+    "alarm",
+    "sleep-journal",
+    "vite",
+    "vanilla-js",
+    "vietnamese"
+  ]
 }
