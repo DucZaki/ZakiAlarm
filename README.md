@@ -1,5 +1,10 @@
 # ZakiAlarm
 
+![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-f7df1e?logo=javascript&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-5-646cff?logo=vite)
+![Tests](https://img.shields.io/badge/tests-node%3Atest-339933?logo=nodedotjs&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 ZakiAlarm is a Vietnamese, mobile-first alarm and sleep-journal frontend. Every
 feature is free: no account, premium tier, payments or advertising. The UI keeps
 the navy, mint, lavender and peach design language of the original frontend.
@@ -63,3 +68,20 @@ escaping user content, all exposed screen routes, and empty-state rendering.
 The local UI was manually checked for create/edit/save, filtering and selecting
 CC0 music, memory/typing execution, alarm testing, snooze across a reload,
 and sleep-session persistence/report/history.
+
+## Project structure
+
+```text
+src/
+  domain/      Alarm scheduling and validation logic (pure functions)
+  state/       Local persistence and the app store
+  audio/       Sound catalog, library, recorder and the sound engine
+  components/  Header, bottom navigation, toolbar and toasts
+  screens/     Alarms, wake flow, missions, sleep, relaxation, settings
+  styles/      Design tokens, base, components and screen styles
+tests/         Node test-runner suites for domain logic and screens
+public/        Bundled CC0 audio loops, icons and the favicon
+```
+
+See `docs/ARCHITECTURE.md` for how these pieces fit together and
+`CONTRIBUTING.md` if you want to run or change the app locally.
