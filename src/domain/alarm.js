@@ -29,3 +29,19 @@ export function validateAlarm(alarm) {
 export function memoryMatches(target, selected) {
   return target.length === selected.length && target.every(n => selected.includes(n));
 }
+
+export function countdownText(alarm, now = Date.now()) {
+  const at = nextOccurrence(alarm, now);
+  if (!at) return null;
+  const totalMinutes = Math.max(0, Math.round((at - now) / 60000));
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  if (hours >= 24) {
+    const days = Math.floor(hours / 24);
+    const restHours = hours % 24;
+    return `còn ${days} ngày${restHours ? ` ${restHours} giờ` : ''}`;
+  }
+  if (hours > 0) return `còn ${hours} giờ${minutes ? ` ${minutes} phút` : ''}`;
+  if (minutes > 0) return `còn ${minutes} phút`;
+  return 'sắp reo';
+}
