@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {nextOccurrence,nextAlarm,newAlarm,normalizeText,memoryMatches,escapeHTML,validateAlarm} from '../src/domain/alarm.js';
+import {nextOccurrence,nextAlarm,newAlarm,normalizeText,memoryMatches,escapeHTML,validateAlarm,countdownText} from '../src/domain/alarm.js';
 import {restoreState,persistState,durableState} from '../src/state/persistence.js';
 const at = (day,hour,minute=0) => new Date(2026,9,day,hour,minute).getTime();
 const alarm = extra => ({...newAlarm(),...extra});
@@ -75,4 +75,11 @@ test('replacement quick nap state persists without adding alarm cards',()=>{
   const restored=restoreState(defaults,storage);
   assert.equal(restored.alarms.length,1);
   assert.deepEqual(restored.quickNap,replacement);
+});
+
+test('countdown text describes the wait until the next occurrence',()=>{
+  assert.equal(countdownText(alarm({time:'06:30',days:[]}),at(2,5)),'còn 1 giờ 30 phút');
+  assert.equal(countdownText(alarm({time:'05:01',days:[]}),at(2,5)),'còn 1 phút');
+  assert.equal(countdownText(alarm({time:'05:00',days:[]}),at(2,5)),'còn 1 ngày');
+  assert.equal(countdownText(alarm({enabled:false}),at(2,5)),null);
 });
